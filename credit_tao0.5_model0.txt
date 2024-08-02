@@ -1,0 +1,1452 @@
+τ=0.5, γ=0.5, lr_w=1
+AUCROC: 68.87 ± 1.47
+F1-score: 86.96 ± 0.41
+ACC: 77.83 ± 0.38
+Parity: 3.37 ± 1.43
+Equality: 2.55 ± 1.14
+
+τ=0.5, γ=0.5, lr_w=1
+AUCROC: 70.79 ± 2.13
+F1-score: 85.17 ± 1.71
+ACC: 76.39 ± 1.38
+Parity: 4.63 ± 2.84
+Equality: 3.28 ± 1.54
+
+τ=0.5, γ=0.5, lr_w=1
+AUCROC: 70.08 ± 2.3
+F1-score: 85.66 ± 1.24
+ACC: 76.81 ± 0.96
+Parity: 4.24 ± 2.31
+Equality: 3.29 ± 1.81
+
+τ=0.5, γ=0.5, lr_w=1
+AUCROC: 64.47 ± 0.59
+F1-score: 73.66 ± 1.84
+ACC: 63.43 ± 1.61
+Parity: 6.27 ± 0.11
+Equality: 6.64 ± 0.18
+τ=0.5, γ=0.5, lr_w=1
+AUCROC: 64.0 ± 0.48
+F1-score: 74.99 ± 1.74
+ACC: 64.58 ± 1.52
+Parity: 6.25 ± 0.06
+Equality: 6.41 ± 0.09
+
+τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001
+AUCROC: 72.54 ± 0.01
+F1-score: 81.53 ± 0.2
+ACC: 73.13 ± 0.23
+Parity: 15.01 ± 0.29
+Equality: 13.51 ± 0.41
+
+τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001
+AUCROC: 73.12 ± 0.01
+F1-score: 82.05 ± 0.01
+ACC: 73.76 ± 0.02
+Parity: 13.05 ± 0.08
+Equality: 10.98 ± 0.1
+τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001
+AUCROC: 70.32 ± 0.0
+F1-score: 79.16 ± 0.06
+ACC: 70.42 ± 0.07
+Parity: 15.11 ± 0.1
+Equality: 14.36 ± 0.14
+τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001
+AUCROC: 70.32 ± 0.0
+F1-score: 79.09 ± 0.1
+ACC: 70.35 ± 0.1
+Parity: 15.13 ± 0.2
+Equality: 14.44 ± 0.34
+τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.0001
+AUCROC: 70.33 ± 0.0
+F1-score: 79.2 ± 0.01
+ACC: 70.47 ± 0.01
+Parity: 15.14 ± 0.01
+Equality: 14.4 ± 0.01
+τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.0001
+AUCROC: 70.33 ± 0.0
+F1-score: 79.2 ± 0.01
+ACC: 70.47 ± 0.01
+Parity: 15.14 ± 0.01
+Equality: 14.4 ± 0.02
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.97 ± 1.99
+F1-score: 87.21 ± 0.62
+ACC: 77.85 ± 0.52
+Parity: 0.84 ± 0.49
+Equality: 0.48 ± 0.18
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.79 ± 1.55
+F1-score: 87.57 ± 0.16
+ACC: 78.19 ± 0.16
+Parity: 0.39 ± 0.2
+Equality: 0.54 ± 0.29
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.47 ± 2.42
+F1-score: 85.73 ± 3.34
+ACC: 76.54 ± 3.13
+Parity: 3.39 ± 5.8
+Equality: 3.05 ± 5.58
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.88 ± 1.5
+F1-score: 84.54 ± 4.87
+ACC: 75.1 ± 5.11
+Parity: 1.48 ± 1.25
+Equality: 1.25 ± 1.16
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.23 ± 1.74
+F1-score: 87.4 ± 0.42
+ACC: 78.05 ± 0.41
+Parity: 1.16 ± 0.82
+Equality: 0.52 ± 0.78
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.92 ± 1.25
+F1-score: 85.3 ± 4.68
+ACC: 75.98 ± 4.66
+Parity: 2.35 ± 4.36
+Equality: 2.33 ± 3.95
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.19 ± 0.71
+F1-score: 87.59 ± 0.13
+ACC: 78.21 ± 0.16
+Parity: 0.58 ± 0.48
+Equality: 0.4 ± 0.15
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.12 ± 0.86
+F1-score: 86.71 ± 1.85
+ACC: 77.51 ± 1.7
+Parity: 2.96 ± 4.81
+Equality: 2.28 ± 4.17
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.06 ± 2.77
+F1-score: 86.94 ± 1.28
+ACC: 77.56 ± 1.45
+Parity: 0.75 ± 0.5
+Equality: 0.47 ± 0.35
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.14 ± 1.88
+F1-score: 85.88 ± 2.2
+ACC: 76.59 ± 2.12
+Parity: 3.47 ± 3.85
+Equality: 2.9 ± 3.28
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.46 ± 0.79
+F1-score: 87.4 ± 0.6
+ACC: 78.08 ± 0.55
+Parity: 1.52 ± 2.36
+Equality: 1.27 ± 1.93
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.79 ± 1.0
+F1-score: 84.39 ± 6.48
+ACC: 75.0 ± 6.61
+Parity: 1.55 ± 1.63
+Equality: 1.17 ± 1.57
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.12 ± 2.76
+F1-score: 85.13 ± 3.33
+ACC: 75.91 ± 3.12
+Parity: 4.21 ± 5.71
+Equality: 3.78 ± 5.78
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.06 ± 1.83
+F1-score: 85.98 ± 3.31
+ACC: 76.8 ± 3.08
+Parity: 3.23 ± 5.91
+Equality: 3.1 ± 5.58
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.12 ± 0.92
+F1-score: 86.03 ± 1.48
+ACC: 76.84 ± 1.46
+Parity: 2.94 ± 3.01
+Equality: 2.42 ± 2.2
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.57 ± 0.04
+F1-score: 82.7 ± 2.01
+ACC: 73.81 ± 1.94
+Parity: 14.05 ± 0.82
+Equality: 11.69 ± 1.04
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.32 ± 1.74
+F1-score: 87.63 ± 0.05
+ACC: 78.12 ± 0.19
+Parity: 0.33 ± 0.26
+Equality: 0.27 ± 0.29
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.62 ± 1.03
+F1-score: 87.47 ± 0.36
+ACC: 78.21 ± 0.41
+Parity: 0.58 ± 0.42
+Equality: 0.46 ± 0.22
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.26 ± 0.23
+F1-score: 79.96 ± 0.42
+ACC: 71.22 ± 0.39
+Parity: 14.11 ± 0.92
+Equality: 12.67 ± 1.03
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.28 ± 0.07
+F1-score: 79.76 ± 0.12
+ACC: 71.02 ± 0.16
+Parity: 14.3 ± 0.42
+Equality: 12.95 ± 0.49
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 64.97 ± 2.45
+F1-score: 87.37 ± 0.33
+ACC: 78.09 ± 0.3
+Parity: 0.71 ± 0.37
+Equality: 0.6 ± 0.21
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.93 ± 1.08
+F1-score: 87.51 ± 0.16
+ACC: 78.19 ± 0.13
+Parity: 0.2 ± 0.08
+Equality: 0.42 ± 0.35
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.11 ± 2.21
+F1-score: 85.98 ± 3.26
+ACC: 76.79 ± 3.02
+Parity: 3.46 ± 5.66
+Equality: 3.15 ± 5.32
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.09 ± 0.79
+F1-score: 87.32 ± 0.65
+ACC: 78.05 ± 0.59
+Parity: 1.33 ± 1.69
+Equality: 0.91 ± 1.37
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.51 ± 0.95
+F1-score: 87.51 ± 0.25
+ACC: 78.19 ± 0.23
+Parity: 0.38 ± 0.25
+Equality: 0.39 ± 0.25
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.64 ± 0.43
+F1-score: 87.41 ± 0.45
+ACC: 78.06 ± 0.41
+Parity: 1.4 ± 1.94
+Equality: 1.24 ± 1.51
+copy=1, τ=0.5, γ=0.001, lr_w=1 , sample=0,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 74.1 ± 0.04
+F1-score: 81.25 ± 0.08
+ACC: 72.82 ± 0.08
+Parity: 13.35 ± 0.15
+Equality: 11.03 ± 0.15
+copy=1, τ=0.5, γ=0.05, lr_w=1 , sample=0,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.87 ± 0.07
+F1-score: 81.85 ± 0.03
+ACC: 73.5 ± 0.03
+Parity: 14.54 ± 0.11
+Equality: 12.15 ± 0.08
+copy=1, τ=0.5, γ=0.1, lr_w=1 , sample=0,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.86 ± 0.07
+F1-score: 81.9 ± 0.05
+ACC: 73.57 ± 0.06
+Parity: 14.51 ± 0.13
+Equality: 12.2 ± 0.14
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=0,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.37 ± 0.1
+F1-score: 82.04 ± 0.03
+ACC: 73.73 ± 0.04
+Parity: 13.44 ± 0.22
+Equality: 11.37 ± 0.13
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.43 ± 0.1
+F1-score: 79.53 ± 0.65
+ACC: 70.78 ± 0.68
+Parity: 14.62 ± 0.9
+Equality: 13.57 ± 1.12
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.24 ± 1.42
+F1-score: 87.49 ± 0.16
+ACC: 78.3 ± 0.16
+Parity: 0.52 ± 0.41
+Equality: 0.49 ± 0.41
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.36 ± 0.14
+F1-score: 79.63 ± 0.67
+ACC: 70.93 ± 0.7
+Parity: 13.09 ± 1.39
+Equality: 11.95 ± 1.63
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.33 ± 0.66
+F1-score: 87.64 ± 0.18
+ACC: 78.3 ± 0.25
+Parity: 0.23 ± 0.13
+Equality: 0.32 ± 0.28
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.52 ± 1.44
+F1-score: 87.6 ± 0.18
+ACC: 78.3 ± 0.22
+Parity: 0.73 ± 0.99
+Equality: 0.58 ± 0.44
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.75 ± 0.71
+F1-score: 84.19 ± 5.03
+ACC: 74.82 ± 5.1
+Parity: 2.36 ± 2.76
+Equality: 2.22 ± 2.73
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.1 ± 1.59
+F1-score: 85.97 ± 2.45
+ACC: 76.63 ± 2.62
+Parity: 1.22 ± 1.38
+Equality: 1.53 ± 1.16
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.3 ± 0.9
+F1-score: 87.54 ± 0.11
+ACC: 78.3 ± 0.15
+Parity: 0.52 ± 0.26
+Equality: 0.35 ± 0.26
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.73 ± 2.55
+F1-score: 87.36 ± 0.62
+ACC: 77.92 ± 0.6
+Parity: 0.53 ± 0.49
+Equality: 0.44 ± 0.64
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.62 ± 1.86
+F1-score: 85.63 ± 3.3
+ACC: 76.42 ± 3.17
+Parity: 3.39 ± 4.92
+Equality: 3.13 ± 4.29
+copy=1, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 64.27 ± 2.92
+F1-score: 86.43 ± 1.44
+ACC: 76.94 ± 1.57
+Parity: 0.92 ± 1.03
+Equality: 0.69 ± 0.91
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.47 ± 0.74
+F1-score: 87.11 ± 1.11
+ACC: 77.73 ± 0.98
+Parity: 1.85 ± 3.38
+Equality: 1.47 ± 2.53
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.67 ± 0.57
+F1-score: 87.48 ± 0.14
+ACC: 78.21 ± 0.1
+Parity: 0.46 ± 0.41
+Equality: 0.31 ± 0.25
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.51 ± 0.52
+F1-score: 87.05 ± 0.66
+ACC: 77.76 ± 0.53
+Parity: 1.28 ± 1.3
+Equality: 1.05 ± 0.99
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.79 ± 0.56
+F1-score: 87.64 ± 0.08
+ACC: 78.33 ± 0.07
+Parity: 0.46 ± 0.28
+Equality: 0.22 ± 0.13
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.38 ± 1.36
+F1-score: 86.36 ± 2.12
+ACC: 77.0 ± 2.13
+Parity: 1.7 ± 1.9
+Equality: 1.14 ± 1.36
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.41 ± 0.33
+F1-score: 87.63 ± 0.13
+ACC: 78.36 ± 0.1
+Parity: 0.62 ± 0.39
+Equality: 0.22 ± 0.14
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.51 ± 2.19
+F1-score: 86.21 ± 1.64
+ACC: 76.85 ± 1.81
+Parity: 1.83 ± 1.62
+Equality: 1.51 ± 1.6
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.3 ± 1.26
+F1-score: 87.39 ± 0.35
+ACC: 78.19 ± 0.28
+Parity: 0.5 ± 0.41
+Equality: 0.28 ± 0.18
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.92 ± 1.37
+F1-score: 87.58 ± 0.13
+ACC: 78.34 ± 0.13
+Parity: 0.65 ± 0.58
+Equality: 0.38 ± 0.31
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.5,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.49 ± 1.03
+F1-score: 87.19 ± 0.73
+ACC: 77.9 ± 0.69
+Parity: 1.05 ± 1.6
+Equality: 0.98 ± 1.36
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.32 ± 1.76
+F1-score: 87.15 ± 0.76
+ACC: 77.89 ± 0.76
+Parity: 1.47 ± 1.74
+Equality: 1.05 ± 1.18
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.5,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.65 ± 0.49
+F1-score: 87.68 ± 0.02
+ACC: 78.24 ± 0.09
+Parity: 0.13 ± 0.1
+Equality: 0.24 ± 0.14
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.16 ± 1.35
+F1-score: 85.24 ± 4.26
+ACC: 75.98 ± 4.31
+Parity: 2.92 ± 3.8
+Equality: 2.65 ± 3.3
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.23 ± 0.66
+F1-score: 85.18 ± 4.59
+ACC: 75.87 ± 4.61
+Parity: 2.51 ± 3.42
+Equality: 2.15 ± 3.25
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.5,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.95 ± 2.08
+F1-score: 83.24 ± 4.51
+ACC: 74.15 ± 4.48
+Parity: 6.96 ± 5.7
+Equality: 6.12 ± 5.3
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.87 ± 0.96
+F1-score: 87.42 ± 0.28
+ACC: 78.1 ± 0.32
+Parity: 0.46 ± 0.18
+Equality: 0.46 ± 0.26
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.5,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 68.79 ± 1.41
+F1-score: 84.18 ± 4.18
+ACC: 75.04 ± 3.86
+Parity: 6.28 ± 7.46
+Equality: 6.03 ± 7.17
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.7,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.41 ± 0.59
+F1-score: 87.5 ± 0.26
+ACC: 78.27 ± 0.27
+Parity: 0.56 ± 0.19
+Equality: 0.22 ± 0.19
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.51 ± 1.61
+F1-score: 87.06 ± 0.75
+ACC: 77.81 ± 0.8
+Parity: 0.94 ± 0.69
+Equality: 0.5 ± 0.48
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.7,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.31 ± 0.99
+F1-score: 87.71 ± 0.06
+ACC: 78.35 ± 0.15
+Parity: 0.18 ± 0.06
+Equality: 0.29 ± 0.16
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.7,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 68.75 ± 0.91
+F1-score: 82.98 ± 4.13
+ACC: 73.92 ± 4.05
+Parity: 7.79 ± 6.3
+Equality: 7.2 ± 5.73
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.61 ± 0.78
+F1-score: 86.38 ± 1.92
+ACC: 77.1 ± 1.85
+Parity: 2.65 ± 4.48
+Equality: 2.33 ± 4.43
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.7,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.48 ± 0.65
+F1-score: 85.22 ± 4.6
+ACC: 75.94 ± 4.67
+Parity: 1.83 ± 2.96
+Equality: 1.69 ± 2.76
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.7,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.18 ± 2.19
+F1-score: 86.87 ± 1.52
+ACC: 77.43 ± 1.74
+Parity: 0.82 ± 1.14
+Equality: 0.84 ± 1.13
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.6 ± 1.37
+F1-score: 87.0 ± 1.28
+ACC: 77.75 ± 1.29
+Parity: 1.59 ± 2.64
+Equality: 1.52 ± 2.43
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.88 ± 0.23
+F1-score: 81.86 ± 1.6
+ACC: 73.07 ± 1.58
+Parity: 14.79 ± 0.76
+Equality: 12.6 ± 1.05
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.21 ± 0.73
+F1-score: 87.43 ± 0.66
+ACC: 78.2 ± 0.59
+Parity: 0.89 ± 1.48
+Equality: 0.7 ± 0.97
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.72 ± 0.04
+F1-score: 81.92 ± 1.24
+ACC: 73.11 ± 1.26
+Parity: 14.29 ± 0.67
+Equality: 12.06 ± 0.57
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.53 ± 2.35
+F1-score: 85.6 ± 3.25
+ACC: 76.47 ± 3.04
+Parity: 3.79 ± 5.59
+Equality: 3.52 ± 5.33
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.83 ± 0.25
+F1-score: 80.14 ± 1.19
+ACC: 71.32 ± 1.18
+Parity: 14.2 ± 0.61
+Equality: 12.84 ± 0.78
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.49 ± 2.13
+F1-score: 87.63 ± 0.16
+ACC: 78.4 ± 0.12
+Parity: 0.42 ± 0.25
+Equality: 0.23 ± 0.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.75 ± 0.06
+F1-score: 80.28 ± 0.58
+ACC: 71.47 ± 0.58
+Parity: 13.82 ± 0.47
+Equality: 12.29 ± 0.84
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.71 ± 0.04
+F1-score: 81.54 ± 1.28
+ACC: 72.75 ± 1.28
+Parity: 14.23 ± 0.86
+Equality: 12.21 ± 0.37
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.65 ± 1.92
+F1-score: 86.71 ± 0.92
+ACC: 77.33 ± 0.91
+Parity: 1.83 ± 1.69
+Equality: 1.44 ± 1.45
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.5,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.7 ± 0.07
+F1-score: 81.46 ± 1.23
+ACC: 72.68 ± 1.21
+Parity: 14.29 ± 0.76
+Equality: 12.26 ± 0.42
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.89 ± 0.24
+F1-score: 80.01 ± 0.73
+ACC: 71.25 ± 0.73
+Parity: 14.03 ± 0.71
+Equality: 12.88 ± 1.05
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.5,epoch=400,avgy=True,hiiden=16 ,channel=2,lr=0.0001,adv=1
+AUCROC: 69.78 ± 0.09
+F1-score: 82.08 ± 1.49
+ACC: 73.31 ± 1.5
+Parity: 14.53 ± 0.77
+Equality: 12.24 ± 0.48
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.7,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.3 ± 0.65
+F1-score: 87.41 ± 0.23
+ACC: 78.13 ± 0.24
+Parity: 0.18 ± 0.17
+Equality: 0.41 ± 0.29
+
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.58 ± 1.09
+F1-score: 87.07 ± 0.63
+ACC: 77.86 ± 0.57
+Parity: 0.99 ± 0.89
+Equality: 0.92 ± 0.72
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.79 ± 1.63
+F1-score: 87.61 ± 0.25
+ACC: 78.35 ± 0.24
+Parity: 0.63 ± 0.51
+Equality: 0.3 ± 0.25
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.96 ± 1.24
+F1-score: 87.55 ± 0.27
+ACC: 78.14 ± 0.28
+Parity: 0.7 ± 0.55
+Equality: 0.31 ± 0.38
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.62 ± 2.12
+F1-score: 87.38 ± 0.18
+ACC: 78.14 ± 0.23
+Parity: 0.65 ± 0.21
+Equality: 0.49 ± 0.22
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.04 ± 1.11
+F1-score: 87.05 ± 0.63
+ACC: 77.72 ± 0.58
+Parity: 0.91 ± 0.92
+Equality: 0.61 ± 0.75
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.4 ± 1.65
+F1-score: 87.53 ± 0.2
+ACC: 78.25 ± 0.12
+Parity: 0.49 ± 0.33
+Equality: 0.46 ± 0.27
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.63 ± 1.14
+F1-score: 87.7 ± 0.04
+ACC: 78.39 ± 0.14
+Parity: 0.2 ± 0.16
+Equality: 0.32 ± 0.31
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.55 ± 1.67
+F1-score: 87.57 ± 0.18
+ACC: 78.23 ± 0.11
+Parity: 0.27 ± 0.21
+Equality: 0.38 ± 0.3
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 68.01 ± 2.29
+F1-score: 84.28 ± 4.3
+ACC: 75.2 ± 4.03
+Parity: 6.05 ± 7.19
+Equality: 5.79 ± 6.85
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.88 ± 1.4
+F1-score: 86.7 ± 0.65
+ACC: 77.47 ± 0.63
+Parity: 1.66 ± 0.78
+Equality: 0.85 ± 0.74
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.17 ± 1.51
+F1-score: 87.25 ± 0.93
+ACC: 78.01 ± 0.98
+Parity: 0.91 ± 0.86
+Equality: 0.76 ± 0.73
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.02 ± 1.34
+F1-score: 87.05 ± 1.06
+ACC: 77.78 ± 1.1
+Parity: 1.05 ± 0.89
+Equality: 0.71 ± 0.89
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.93 ± 2.59
+F1-score: 85.18 ± 3.48
+ACC: 75.89 ± 3.25
+Parity: 4.15 ± 5.76
+Equality: 3.81 ± 5.75
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.43 ± 0.68
+F1-score: 87.48 ± 0.54
+ACC: 78.21 ± 0.53
+Parity: 0.67 ± 0.54
+Equality: 0.3 ± 0.35
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.82 ± 1.7
+F1-score: 85.9 ± 2.8
+ACC: 76.52 ± 3.0
+Parity: 2.12 ± 2.03
+Equality: 1.71 ± 2.0
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.97 ± 2.08
+F1-score: 87.51 ± 0.18
+ACC: 78.22 ± 0.13
+Parity: 1.19 ± 1.58
+Equality: 0.81 ± 1.0
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.9 ± 0.96
+F1-score: 87.57 ± 0.25
+ACC: 78.22 ± 0.19
+Parity: 0.93 ± 1.03
+Equality: 0.57 ± 0.61
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.12 ± 2.46
+F1-score: 86.71 ± 1.81
+ACC: 77.28 ± 2.1
+Parity: 1.09 ± 0.76
+Equality: 0.63 ± 0.88
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 68.26 ± 1.12
+F1-score: 85.7 ± 3.52
+ACC: 76.52 ± 3.3
+Parity: 3.46 ± 6.2
+Equality: 3.39 ± 6.07
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.62 ± 0.39
+F1-score: 87.65 ± 0.16
+ACC: 78.37 ± 0.14
+Parity: 0.53 ± 0.51
+Equality: 0.21 ± 0.09
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.92 ± 1.37
+F1-score: 87.1 ± 0.75
+ACC: 77.77 ± 0.67
+Parity: 1.42 ± 1.4
+Equality: 0.98 ± 1.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.26 ± 1.54
+F1-score: 87.3 ± 0.6
+ACC: 77.95 ± 0.52
+Parity: 1.39 ± 1.29
+Equality: 0.84 ± 0.73
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.33 ± 0.53
+F1-score: 87.16 ± 0.63
+ACC: 77.97 ± 0.59
+Parity: 1.21 ± 0.99
+Equality: 0.6 ± 0.6
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.05 ± 0.5
+F1-score: 87.32 ± 0.46
+ACC: 78.05 ± 0.42
+Parity: 0.36 ± 0.37
+Equality: 0.34 ± 0.17
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 64.95 ± 1.94
+F1-score: 87.6 ± 0.17
+ACC: 78.28 ± 0.17
+Parity: 0.58 ± 0.52
+Equality: 0.5 ± 0.2
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.2 ± 3.22
+F1-score: 85.53 ± 3.08
+ACC: 76.37 ± 2.86
+Parity: 3.14 ± 5.75
+Equality: 3.12 ± 5.27
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 64.52 ± 2.81
+F1-score: 85.73 ± 2.84
+ACC: 76.19 ± 3.22
+Parity: 1.04 ± 1.04
+Equality: 0.9 ± 0.93
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 64.95 ± 2.74
+F1-score: 86.52 ± 0.82
+ACC: 77.31 ± 0.76
+Parity: 1.35 ± 1.09
+Equality: 1.52 ± 0.95
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.5,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.89 ± 2.25
+F1-score: 83.63 ± 3.82
+ACC: 74.68 ± 3.64
+Parity: 7.47 ± 6.48
+Equality: 6.74 ± 6.6
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.53 ± 2.12
+F1-score: 87.35 ± 0.74
+ACC: 78.05 ± 0.76
+Parity: 0.74 ± 1.17
+Equality: 0.76 ± 1.08
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.57 ± 2.09
+F1-score: 87.02 ± 1.2
+ACC: 77.61 ± 1.23
+Parity: 0.98 ± 1.33
+Equality: 0.76 ± 1.37
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.44 ± 1.45
+F1-score: 87.3 ± 0.54
+ACC: 77.99 ± 0.48
+Parity: 0.51 ± 0.72
+Equality: 0.4 ± 0.2
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.8 ± 1.14
+F1-score: 87.31 ± 0.61
+ACC: 78.02 ± 0.58
+Parity: 0.93 ± 1.21
+Equality: 0.81 ± 1.11
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.59 ± 1.9
+F1-score: 86.33 ± 1.22
+ACC: 77.06 ± 1.21
+Parity: 1.84 ± 1.43
+Equality: 1.64 ± 1.25
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.86 ± 2.53
+F1-score: 86.62 ± 2.04
+ACC: 77.19 ± 2.33
+Parity: 0.42 ± 0.45
+Equality: 0.53 ± 0.63
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.43 ± 1.86
+F1-score: 87.44 ± 0.27
+ACC: 78.21 ± 0.28
+Parity: 0.89 ± 0.63
+Equality: 0.4 ± 0.41
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.32 ± 1.74
+F1-score: 87.33 ± 0.28
+ACC: 78.05 ± 0.25
+Parity: 0.42 ± 0.27
+Equality: 0.49 ± 0.38
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.6,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 68.33 ± 1.3
+F1-score: 85.89 ± 3.4
+ACC: 76.64 ± 3.15
+Parity: 3.33 ± 5.84
+Equality: 3.08 ± 5.56
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.91 ± 0.71
+F1-score: 87.14 ± 0.92
+ACC: 77.9 ± 0.93
+Parity: 0.97 ± 1.39
+Equality: 0.97 ± 1.05
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.64 ± 0.7
+F1-score: 87.63 ± 0.07
+ACC: 78.41 ± 0.1
+Parity: 0.44 ± 0.22
+Equality: 0.2 ± 0.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.14 ± 0.75
+F1-score: 87.35 ± 0.73
+ACC: 78.08 ± 0.68
+Parity: 0.84 ± 0.85
+Equality: 0.65 ± 0.8
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.02 ± 2.22
+F1-score: 85.13 ± 3.05
+ACC: 75.91 ± 2.96
+Parity: 4.25 ± 5.62
+Equality: 3.42 ± 5.4
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.1 ± 1.25
+F1-score: 87.5 ± 0.23
+ACC: 78.19 ± 0.2
+Parity: 0.58 ± 0.5
+Equality: 0.42 ± 0.24
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.45 ± 1.97
+F1-score: 85.91 ± 3.56
+ACC: 76.65 ± 3.31
+Parity: 3.58 ± 6.0
+Equality: 3.26 ± 6.02
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.95 ± 1.64
+F1-score: 86.83 ± 1.18
+ACC: 77.48 ± 1.24
+Parity: 1.19 ± 1.0
+Equality: 0.62 ± 0.75
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.73 ± 1.97
+F1-score: 87.4 ± 0.17
+ACC: 78.19 ± 0.19
+Parity: 0.83 ± 0.61
+Equality: 0.38 ± 0.25
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.7,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.81 ± 1.28
+F1-score: 85.68 ± 3.28
+ACC: 76.54 ± 3.07
+Parity: 3.89 ± 5.53
+Equality: 3.62 ± 5.48
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.36 ± 0.17
+F1-score: 80.0 ± 0.39
+ACC: 71.24 ± 0.39
+Parity: 14.25 ± 0.59
+Equality: 12.63 ± 0.79
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.45 ± 0.16
+F1-score: 80.09 ± 0.49
+ACC: 71.38 ± 0.47
+Parity: 14.78 ± 0.87
+Equality: 13.6 ± 1.11
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.44 ± 0.09
+F1-score: 79.83 ± 0.64
+ACC: 71.03 ± 0.66
+Parity: 14.61 ± 0.85
+Equality: 13.15 ± 0.84
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.33 ± 0.19
+F1-score: 79.64 ± 0.7
+ACC: 70.87 ± 0.73
+Parity: 13.11 ± 0.72
+Equality: 11.68 ± 0.92
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.2,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.31 ± 0.09
+F1-score: 79.9 ± 0.51
+ACC: 71.16 ± 0.54
+Parity: 14.06 ± 0.81
+Equality: 12.75 ± 1.11
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.2,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.2 ± 0.34
+F1-score: 79.73 ± 0.68
+ACC: 70.94 ± 0.69
+Parity: 14.36 ± 1.1
+Equality: 12.99 ± 1.26
+jq, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.2,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.38 ± 0.12
+F1-score: 79.93 ± 0.65
+ACC: 71.23 ± 0.67
+Parity: 13.58 ± 0.99
+Equality: 12.32 ± 1.38
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=0,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.33 ± 0.08
+F1-score: 82.14 ± 0.07
+ACC: 73.86 ± 0.08
+Parity: 13.3 ± 0.08
+Equality: 11.36 ± 0.11
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.52 ± 2.65
+F1-score: 87.61 ± 0.08
+ACC: 78.25 ± 0.21
+Parity: 0.52 ± 0.39
+Equality: 0.22 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.05 ± 1.97
+F1-score: 87.63 ± 0.09
+ACC: 78.18 ± 0.18
+Parity: 0.34 ± 0.25
+Equality: 0.1 ± 0.05
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.56 ± 0.06
+F1-score: 82.05 ± 0.04
+ACC: 73.78 ± 0.05
+Parity: 13.07 ± 0.06
+Equality: 11.12 ± 0.09
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.23 ± 2.86
+F1-score: 87.64 ± 0.08
+ACC: 78.33 ± 0.12
+Parity: 0.68 ± 0.75
+Equality: 0.42 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.36 ± 1.44
+F1-score: 87.64 ± 0.07
+ACC: 78.21 ± 0.1
+Parity: 0.36 ± 0.27
+Equality: 0.24 ± 0.08
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.38 ± 0.07
+F1-score: 82.1 ± 0.06
+ACC: 73.85 ± 0.07
+Parity: 12.96 ± 0.11
+Equality: 10.93 ± 0.16
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.68 ± 2.81
+F1-score: 87.62 ± 0.11
+ACC: 78.35 ± 0.15
+Parity: 0.46 ± 0.29
+Equality: 0.22 ± 0.14
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.48 ± 1.51
+F1-score: 87.67 ± 0.11
+ACC: 78.34 ± 0.1
+Parity: 0.74 ± 0.84
+Equality: 0.34 ± 0.29
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.16 ± 0.03
+F1-score: 82.0 ± 0.02
+ACC: 73.71 ± 0.02
+Parity: 12.93 ± 0.09
+Equality: 10.87 ± 0.07
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.49 ± 2.88
+F1-score: 87.54 ± 0.2
+ACC: 78.24 ± 0.21
+Parity: 0.72 ± 0.58
+Equality: 0.3 ± 0.13
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.2 ± 1.65
+F1-score: 87.67 ± 0.1
+ACC: 78.33 ± 0.12
+Parity: 0.55 ± 0.63
+Equality: 0.23 ± 0.1
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 72.63 ± 0.02
+F1-score: 81.68 ± 0.28
+ACC: 73.3 ± 0.31
+Parity: 14.58 ± 0.2
+Equality: 12.74 ± 0.37
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.14 ± 1.94
+F1-score: 87.2 ± 0.63
+ACC: 77.97 ± 0.58
+Parity: 1.71 ± 1.59
+Equality: 1.33 ± 1.22
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.11 ± 2.02
+F1-score: 87.63 ± 0.11
+ACC: 78.25 ± 0.14
+Parity: 0.34 ± 0.44
+Equality: 0.19 ± 0.11
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.16 ± 0.07
+ACC: 70.42 ± 0.08
+Parity: 15.06 ± 0.07
+Equality: 14.31 ± 0.09
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.3 ± 2.8
+F1-score: 87.51 ± 0.22
+ACC: 78.16 ± 0.21
+Parity: 1.0 ± 0.89
+Equality: 0.54 ± 0.25
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.91 ± 2.1
+F1-score: 87.67 ± 0.08
+ACC: 78.25 ± 0.21
+Parity: 0.33 ± 0.25
+Equality: 0.08 ± 0.07
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.14 ± 0.07
+ACC: 70.4 ± 0.08
+Parity: 15.06 ± 0.08
+Equality: 14.32 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.45 ± 1.79
+F1-score: 87.03 ± 0.66
+ACC: 77.8 ± 0.64
+Parity: 1.78 ± 1.68
+Equality: 1.52 ± 1.53
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.01 ± 1.94
+F1-score: 87.71 ± 0.06
+ACC: 78.33 ± 0.16
+Parity: 0.45 ± 0.56
+Equality: 0.31 ± 0.08
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.13 ± 0.07
+ACC: 70.39 ± 0.08
+Parity: 15.06 ± 0.08
+Equality: 14.31 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.67 ± 2.56
+F1-score: 87.36 ± 0.38
+ACC: 78.07 ± 0.43
+Parity: 1.18 ± 1.03
+Equality: 0.73 ± 0.8
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.83 ± 2.28
+F1-score: 87.67 ± 0.05
+ACC: 78.25 ± 0.16
+Parity: 0.2 ± 0.08
+Equality: 0.22 ± 0.14
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.12 ± 0.07
+ACC: 70.38 ± 0.08
+Parity: 15.09 ± 0.09
+Equality: 14.37 ± 0.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.35 ± 1.82
+F1-score: 86.93 ± 0.6
+ACC: 77.66 ± 0.54
+Parity: 2.31 ± 1.82
+Equality: 1.43 ± 1.47
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.01 ± 1.72
+F1-score: 87.67 ± 0.09
+ACC: 78.25 ± 0.2
+Parity: 0.46 ± 0.6
+Equality: 0.22 ± 0.14
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.12 ± 0.08
+ACC: 70.38 ± 0.08
+Parity: 15.1 ± 0.08
+Equality: 14.38 ± 0.14
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=0,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.33 ± 0.08
+F1-score: 82.14 ± 0.07
+ACC: 73.86 ± 0.08
+Parity: 13.3 ± 0.08
+Equality: 11.36 ± 0.11
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.2 ± 1.89
+F1-score: 87.36 ± 0.26
+ACC: 78.08 ± 0.27
+Parity: 1.1 ± 0.82
+Equality: 0.63 ± 0.54
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.39 ± 1.31
+F1-score: 87.66 ± 0.11
+ACC: 78.26 ± 0.21
+Parity: 0.67 ± 0.67
+Equality: 0.24 ± 0.26
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.58 ± 0.06
+F1-score: 82.04 ± 0.05
+ACC: 73.78 ± 0.06
+Parity: 13.02 ± 0.09
+Equality: 11.06 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.63 ± 2.45
+F1-score: 87.22 ± 0.81
+ACC: 77.88 ± 0.76
+Parity: 0.97 ± 1.43
+Equality: 0.89 ± 1.09
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.23 ± 1.69
+F1-score: 87.65 ± 0.06
+ACC: 78.23 ± 0.07
+Parity: 0.52 ± 0.43
+Equality: 0.26 ± 0.05
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.31 ± 0.04
+F1-score: 82.08 ± 0.04
+ACC: 73.82 ± 0.04
+Parity: 12.91 ± 0.14
+Equality: 10.88 ± 0.2
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.46 ± 3.08
+F1-score: 87.56 ± 0.06
+ACC: 78.25 ± 0.14
+Parity: 0.5 ± 0.44
+Equality: 0.24 ± 0.14
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.5 ± 1.47
+F1-score: 87.67 ± 0.1
+ACC: 78.34 ± 0.07
+Parity: 0.67 ± 0.76
+Equality: 0.25 ± 0.2
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.15 ± 0.04
+F1-score: 82.01 ± 0.03
+ACC: 73.73 ± 0.03
+Parity: 12.97 ± 0.11
+Equality: 10.9 ± 0.08
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.55 ± 2.86
+F1-score: 87.55 ± 0.21
+ACC: 78.22 ± 0.22
+Parity: 0.74 ± 0.6
+Equality: 0.28 ± 0.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.79 ± 2.46
+F1-score: 87.63 ± 0.07
+ACC: 78.2 ± 0.14
+Parity: 0.28 ± 0.22
+Equality: 0.15 ± 0.09
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 72.63 ± 0.02
+F1-score: 81.64 ± 0.29
+ACC: 73.26 ± 0.33
+Parity: 14.69 ± 0.26
+Equality: 12.92 ± 0.41
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.94 ± 2.27
+F1-score: 87.19 ± 0.63
+ACC: 77.95 ± 0.59
+Parity: 1.4 ± 1.39
+Equality: 1.13 ± 1.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.07 ± 2.09
+F1-score: 87.63 ± 0.12
+ACC: 78.25 ± 0.14
+Parity: 0.33 ± 0.4
+Equality: 0.18 ± 0.13
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.16 ± 0.07
+ACC: 70.42 ± 0.08
+Parity: 15.06 ± 0.07
+Equality: 14.31 ± 0.09
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.24 ± 2.87
+F1-score: 87.53 ± 0.21
+ACC: 78.16 ± 0.21
+Parity: 0.9 ± 0.77
+Equality: 0.42 ± 0.23
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.21 ± 1.51
+F1-score: 87.71 ± 0.1
+ACC: 78.34 ± 0.21
+Parity: 0.69 ± 0.59
+Equality: 0.19 ± 0.17
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.14 ± 0.07
+ACC: 70.4 ± 0.08
+Parity: 15.06 ± 0.08
+Equality: 14.32 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.45 ± 1.78
+F1-score: 86.74 ± 0.99
+ACC: 77.49 ± 0.98
+Parity: 2.18 ± 2.13
+Equality: 1.9 ± 1.91
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.92 ± 2.11
+F1-score: 87.7 ± 0.07
+ACC: 78.3 ± 0.19
+Parity: 0.18 ± 0.08
+Equality: 0.23 ± 0.13
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.13 ± 0.07
+ACC: 70.39 ± 0.08
+Parity: 15.06 ± 0.08
+Equality: 14.31 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.55 ± 2.58
+F1-score: 87.41 ± 0.41
+ACC: 78.14 ± 0.43
+Parity: 1.13 ± 1.11
+Equality: 0.67 ± 0.78
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.39 ± 1.32
+F1-score: 87.68 ± 0.07
+ACC: 78.34 ± 0.1
+Parity: 0.56 ± 0.55
+Equality: 0.23 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.12 ± 0.07
+ACC: 70.38 ± 0.08
+Parity: 15.09 ± 0.09
+Equality: 14.37 ± 0.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.35 ± 1.82
+F1-score: 86.75 ± 0.91
+ACC: 77.44 ± 0.91
+Parity: 2.31 ± 1.85
+Equality: 1.59 ± 1.72
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.75 ± 2.21
+F1-score: 87.64 ± 0.08
+ACC: 78.18 ± 0.21
+Parity: 0.19 ± 0.13
+Equality: 0.19 ± 0.17
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=20,perturb_epsilon=0.3,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.12 ± 0.08
+ACC: 70.38 ± 0.08
+Parity: 15.1 ± 0.08
+Equality: 14.38 ± 0.14
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=0,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.33 ± 0.08
+F1-score: 82.14 ± 0.07
+ACC: 73.86 ± 0.08
+Parity: 13.3 ± 0.08
+Equality: 11.36 ± 0.11
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.08 ± 2.09
+F1-score: 87.38 ± 0.25
+ACC: 78.09 ± 0.26
+Parity: 1.05 ± 0.76
+Equality: 0.6 ± 0.51
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.34 ± 1.39
+F1-score: 87.67 ± 0.12
+ACC: 78.26 ± 0.21
+Parity: 0.62 ± 0.55
+Equality: 0.13 ± 0.06
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.58 ± 0.06
+F1-score: 82.05 ± 0.05
+ACC: 73.78 ± 0.07
+Parity: 13.02 ± 0.08
+Equality: 11.07 ± 0.11
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.71 ± 2.32
+F1-score: 87.23 ± 0.77
+ACC: 77.86 ± 0.7
+Parity: 0.96 ± 1.6
+Equality: 0.86 ± 1.11
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.11 ± 1.92
+F1-score: 87.63 ± 0.06
+ACC: 78.19 ± 0.12
+Parity: 0.31 ± 0.28
+Equality: 0.23 ± 0.1
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.32 ± 0.05
+F1-score: 82.06 ± 0.04
+ACC: 73.79 ± 0.04
+Parity: 12.89 ± 0.06
+Equality: 10.88 ± 0.1
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.42 ± 3.15
+F1-score: 87.61 ± 0.1
+ACC: 78.33 ± 0.11
+Parity: 0.41 ± 0.24
+Equality: 0.22 ± 0.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.44 ± 1.59
+F1-score: 87.65 ± 0.08
+ACC: 78.28 ± 0.08
+Parity: 0.49 ± 0.66
+Equality: 0.2 ± 0.22
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 73.17 ± 0.05
+F1-score: 82.02 ± 0.03
+ACC: 73.74 ± 0.02
+Parity: 12.96 ± 0.11
+Equality: 10.93 ± 0.1
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.55 ± 2.85
+F1-score: 87.55 ± 0.21
+ACC: 78.23 ± 0.22
+Parity: 0.73 ± 0.62
+Equality: 0.25 ± 0.17
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.92 ± 2.2
+F1-score: 87.64 ± 0.07
+ACC: 78.21 ± 0.12
+Parity: 0.29 ± 0.22
+Equality: 0.16 ± 0.08
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 72.63 ± 0.02
+F1-score: 81.56 ± 0.29
+ACC: 73.17 ± 0.32
+Parity: 14.72 ± 0.2
+Equality: 13.02 ± 0.36
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.96 ± 2.23
+F1-score: 87.19 ± 0.63
+ACC: 77.95 ± 0.59
+Parity: 1.39 ± 1.38
+Equality: 1.12 ± 1.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.03 ± 2.17
+F1-score: 87.63 ± 0.12
+ACC: 78.25 ± 0.14
+Parity: 0.32 ± 0.41
+Equality: 0.2 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.16 ± 0.07
+ACC: 70.42 ± 0.08
+Parity: 15.06 ± 0.07
+Equality: 14.31 ± 0.09
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 65.26 ± 2.84
+F1-score: 87.52 ± 0.21
+ACC: 78.15 ± 0.21
+Parity: 0.8 ± 0.8
+Equality: 0.41 ± 0.22
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.0 ± 1.92
+F1-score: 87.68 ± 0.08
+ACC: 78.27 ± 0.21
+Parity: 0.44 ± 0.23
+Equality: 0.11 ± 0.07
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.13 ± 0.07
+ACC: 70.39 ± 0.08
+Parity: 15.05 ± 0.08
+Equality: 14.3 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.45 ± 1.79
+F1-score: 86.72 ± 1.01
+ACC: 77.48 ± 1.0
+Parity: 2.31 ± 2.33
+Equality: 1.96 ± 2.0
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.99 ± 1.97
+F1-score: 87.7 ± 0.06
+ACC: 78.31 ± 0.18
+Parity: 0.41 ± 0.47
+Equality: 0.28 ± 0.09
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.13 ± 0.07
+ACC: 70.39 ± 0.07
+Parity: 15.05 ± 0.08
+Equality: 14.31 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 66.22 ± 1.66
+F1-score: 87.23 ± 0.64
+ACC: 78.0 ± 0.59
+Parity: 1.44 ± 1.48
+Equality: 0.9 ± 1.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 67.57 ± 0.97
+F1-score: 87.68 ± 0.07
+ACC: 78.35 ± 0.12
+Parity: 0.62 ± 0.66
+Equality: 0.35 ± 0.22
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=15,perturb_epsilon=0.4,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=0
+AUCROC: 70.32 ± 0.0
+F1-score: 79.11 ± 0.07
+ACC: 70.37 ± 0.08
+Parity: 15.08 ± 0.1
+Equality: 14.36 ± 0.16
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.48 ± 0.09
+F1-score: 82.02 ± 0.07
+ACC: 73.71 ± 0.09
+Parity: 13.31 ± 0.11
+Equality: 11.27 ± 0.17
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.43 ± 0.06
+F1-score: 82.04 ± 0.04
+ACC: 73.74 ± 0.05
+Parity: 13.38 ± 0.11
+Equality: 11.4 ± 0.1
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.59 ± 0.05
+F1-score: 82.1 ± 0.13
+ACC: 73.81 ± 0.16
+Parity: 13.13 ± 0.16
+Equality: 11.04 ± 0.23
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.61 ± 0.17
+F1-score: 82.01 ± 0.15
+ACC: 73.71 ± 0.17
+Parity: 13.34 ± 0.14
+Equality: 11.29 ± 0.2
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.78 ± 0.14
+F1-score: 81.8 ± 0.06
+ACC: 73.49 ± 0.06
+Parity: 13.13 ± 0.17
+Equality: 10.97 ± 0.19
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=3,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.7 ± 0.28
+F1-score: 81.88 ± 0.14
+ACC: 73.57 ± 0.16
+Parity: 13.37 ± 0.11
+Equality: 11.27 ± 0.12
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.74 ± 0.15
+F1-score: 81.94 ± 0.13
+ACC: 73.64 ± 0.14
+Parity: 13.12 ± 0.19
+Equality: 10.99 ± 0.16
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.68 ± 0.13
+F1-score: 81.97 ± 0.13
+ACC: 73.66 ± 0.14
+Parity: 13.14 ± 0.23
+Equality: 11.04 ± 0.25
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.72 ± 0.14
+F1-score: 81.96 ± 0.08
+ACC: 73.67 ± 0.08
+Parity: 12.99 ± 0.27
+Equality: 10.82 ± 0.29
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=7,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.71 ± 0.16
+F1-score: 81.93 ± 0.11
+ACC: 73.63 ± 0.13
+Parity: 13.27 ± 0.26
+Equality: 11.09 ± 0.29
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.72 ± 0.11
+F1-score: 82.01 ± 0.16
+ACC: 73.72 ± 0.18
+Parity: 13.05 ± 0.14
+Equality: 10.91 ± 0.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=10,perturb_epsilon=0.1,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.7 ± 0.17
+F1-score: 81.97 ± 0.14
+ACC: 73.67 ± 0.16
+Parity: 13.13 ± 0.25
+Equality: 10.95 ± 0.24
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=12,perturb_epsilon=0.1,epoch=600,avgy=False,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.65 ± 0.17
+F1-score: 81.96 ± 0.1
+ACC: 73.66 ± 0.09
+Parity: 13.02 ± 0.11
+Equality: 10.83 ± 0.15
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=5,perturb_epsilon=0.5,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.5 ± 0.02
+F1-score: 81.66 ± 0.08
+ACC: 73.34 ± 0.09
+Parity: 12.57 ± 0.15
+Equality: 10.59 ± 0.16
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=1,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.83 ± 0.0
+F1-score: 81.9 ± 0.05
+ACC: 73.62 ± 0.05
+Parity: 12.47 ± 0.16
+Equality: 10.41 ± 0.17
+copy=0, τ=0.5, γ=0.5, lr_w=1 , sample=2,perturb_epsilon=0.4,epoch=600,avgy=True,hiiden=16 ,channel=2,lr=0.001,adv=1
+AUCROC: 73.67 ± 0.02
+F1-score: 81.83 ± 0.08
+ACC: 73.53 ± 0.09
+Parity: 12.75 ± 0.17
+Equality: 10.74 ± 0.16
