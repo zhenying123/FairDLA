@@ -66,7 +66,14 @@ def compute_attribute_vectors_avg_diff(embed: torch.Tensor, sens: torch.Tensor, 
                                        norm=False) -> torch.Tensor:
     pos_mask = (sens == 1).long()
     neg_mask = 1 - pos_mask
-
+    def compute_angle(v1, v2):
+        # Ensure the vectors are normalized to prevent numerical issues
+        v1_norm = v1 / torch.norm(v1)
+        v2_norm = v2 / torch.norm(v2)
+        cos_sim = torch.dot(v1_norm, v2_norm)
+        cos_sim = torch.clamp(cos_sim, -1.0, 1.0)  # Clamp values to the valid range for acos
+        angle = torch.acos(cos_sim) * (180.0 / torch.pi)  # Convert from radians to degrees
+        return angle.item()  # Convert Tensor to float for readability
     if sample:
         neg_sample_num = min(pos_mask.sum(), neg_mask.sum()).item()
         np.random.seed(0)
@@ -80,6 +87,8 @@ def compute_attribute_vectors_avg_diff(embed: torch.Tensor, sens: torch.Tensor, 
     z_pos_per_attribute = torch.sum(embed * pos_mask.unsqueeze(1), 0)
     z_neg_per_attribute = torch.sum(embed * neg_mask.unsqueeze(1), 0)
     attr_vector = ((z_pos_per_attribute / cnt_pos) - (z_neg_per_attribute / cnt_neg))
+    angle = compute_angle(z_pos_per_attribute, z_neg_per_attribute)
+    print(f'Angle between z_pos_per_attribute and z_neg_per_attribute: {angle} degrees')
     l2_norm = math.sqrt((attr_vector * attr_vector).sum())
     if norm is True:
         attr_vector /= l2_norm
@@ -130,8 +139,17 @@ def compute_attribute_vectors_avg_diff_y(embed: torch.Tensor, sens: torch.Tensor
                                        sample=False, norm=False) -> dict:
     unique_labels = labels.unique()
     attr_vectors_diff = {}
+    def compute_angle(v1, v2):
+        # Ensure the vectors are normalized to prevent numerical issues
+        v1_norm = v1 / torch.norm(v1)
+        v2_norm = v2 / torch.norm(v2)
+        cos_sim = torch.dot(v1_norm, v2_norm)
+        cos_sim = torch.clamp(cos_sim, -1.0, 1.0)  # Clamp values to the valid range for acos
+        angle = torch.acos(cos_sim) * (180.0 / torch.pi)  # Convert from radians to degrees
+        return angle.item()  # Convert Tensor to float for readability
 
     for label in unique_labels:
+        print(f'label={label}')
         label_mask = (labels == label).long()
         
         pos_mask = (sens == 1).long()
@@ -156,12 +174,16 @@ def compute_attribute_vectors_avg_diff_y(embed: torch.Tensor, sens: torch.Tensor
 
         z_pos_per_attribute = torch.sum(embed * pos_combined_mask.unsqueeze(1), 0)
         z_neg_per_attribute = torch.sum(embed * neg_combined_mask.unsqueeze(1), 0)
+
         attr_vector_diff = (z_pos_per_attribute / cnt_pos) - (z_neg_per_attribute / cnt_neg)
         
-
+        
+        angle = compute_angle(z_pos_per_attribute, z_neg_per_attribute)
+        print(f'Angle between z_pos_per_attribute and z_neg_per_attribute: {angle} degrees')
         if norm:
             l2_norm = math.sqrt((attr_vector_diff * attr_vector_diff).sum())
             attr_vector_diff /= l2_norm
+            
 
         attr_vectors_diff[label.item()] = attr_vector_diff
 

@@ -96,34 +96,34 @@ def sample_batch_sen_idx(X, A, y, batch_size, s):
 
     return batch_x, batch_y
 
-def fair_mixup(all_logit, labels, sens, model, alpha = 2):
-    idx_s0 = np.where(sens.cpu().numpy()==0)[0]
-    idx_s1 = np.where(sens.cpu().numpy()==1)[0]
+# def fair_mixup(all_logit, labels, sens, model, alpha = 2):
+#     idx_s0 = np.where(sens.cpu().numpy()==0)[0]
+#     idx_s1 = np.where(sens.cpu().numpy()==1)[0]
 
-    # print(f'idx_s0={len(idx_s0)}')
-    # print(f'idx_s1={len(idx_s1)}')
-    batch_size = min(len(idx_s0), len(idx_s1))
+#     # print(f'idx_s0={len(idx_s0)}')
+#     # print(f'idx_s1={len(idx_s1)}')
+#     batch_size = min(len(idx_s0), len(idx_s1))
 
-    batch_logit_0, batch_y_0 = sample_batch_sen_idx(all_logit, sens, labels, batch_size, 0)
-    batch_logit_1, batch_y_1 = sample_batch_sen_idx(all_logit, sens, labels, batch_size, 1)
+#     batch_logit_0, batch_y_0 = sample_batch_sen_idx(all_logit, sens, labels, batch_size, 0)
+#     batch_logit_1, batch_y_1 = sample_batch_sen_idx(all_logit, sens, labels, batch_size, 1)
 
     
-    gamma = beta(alpha, alpha)
+#     gamma = beta(alpha, alpha)
 
-    batch_logit_mix = batch_logit_0 * gamma + batch_logit_1 * (1 - gamma)
-    batch_logit_mix = batch_logit_mix.requires_grad_(True)
+#     batch_logit_mix = batch_logit_0 * gamma + batch_logit_1 * (1 - gamma)
+#     batch_logit_mix = batch_logit_mix.requires_grad_(True)
 
-    output = F.softmax(batch_logit_mix, dim=1)
+#     output = F.softmax(batch_logit_mix, dim=1)
 
-    # gradient regularization
-    gradx = torch.autograd.grad(output.sum(), batch_logit_mix, create_graph=True)[0]
+#     # gradient regularization
+#     gradx = torch.autograd.grad(output.sum(), batch_logit_mix, create_graph=True)[0]
 
-    batch_logit_d = batch_logit_1 - batch_logit_0
-    grad_inn = (gradx * batch_logit_d).sum(1)
-    E_grad = grad_inn.mean(0)
-    loss_reg = torch.abs(E_grad)
+#     batch_logit_d = batch_logit_1 - batch_logit_0
+#     grad_inn = (gradx * batch_logit_d).sum(1)
+#     E_grad = grad_inn.mean(0)
+#     loss_reg = torch.abs(E_grad)
 
-    return loss_reg
+#     return loss_reg
 
 @torch.no_grad()
 def compute_attribute_vectors_avg_diff_y(embed: torch.Tensor, sens: torch.Tensor, labels: torch.Tensor, 

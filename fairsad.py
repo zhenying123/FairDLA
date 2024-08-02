@@ -9,8 +9,13 @@ from torch_sparse import SparseTensor, matmul
 from torch import Tensor
 from torch_geometric.nn.dense.linear import Linear
 import torch.nn.functional as F
+import torch
+from sklearn.decomposition import KernelPCA
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.manifold import TSNE
+plt.rcParams.update({'font.size': 18, 'font.family': 'serif'})
 class Pre_FairADG(torch.nn.Module):
-    
     def __init__(self, train_args,logger):
         super(Pre_FairADG, self).__init__()
         self.args = train_args
@@ -140,7 +145,7 @@ class Pre_FairADG(torch.nn.Module):
                                                 data.labels[data.idx_val].cpu().numpy(),
                                                 data.sens[data.idx_val].cpu().numpy())
                     
-
+                    #预训练尝试,但是效果好像不好，再说吧
                     res_val = acc_val + roc_val - parity - equality
                     self.logger.info(f'Epoch {epoch}: Val Accuracy: {acc_val:.4f}, Val ROC AUC: {roc_val:.4f}, Val F1: {f1_val:.4f}, Val Parity: {parity:.4f}, Val Equality: {equality:.4f}')
 
@@ -171,8 +176,241 @@ class Pre_FairADG(torch.nn.Module):
 
         self.logger.info(f'ROC AUC: {roc_test:.4f}, Test F1: {f1_test:.4f}, Test Parity: {parity_test:.4f}, Test Equality: {equality_test:.4f}')
 
+#     def __init__(self, train_args,logger):
+#         super(Pre_FairADG, self).__init__()
+#         self.args = train_args
+#         # model of FairADG: encoder,classifier
+        
+#         self.encoder = DisGCN(nfeat=self.args.nfeat,
+#                                 nhid=self.args.hidden,
+#                                 nclass=self.args.nclass,
+#                                 chan_num=self.args.channels,
+#                                 layer_num=2,
+#                                 dropout=self.args.dropout
+#                                 ).to(self.args.device)
+        
+#         self.classifier = nn.Linear(train_args.hidden//2, train_args.nclass).to(self.args.device)
+#         self.classifier_s = nn.Linear(train_args.hidden//2, train_args.nclass).to(self.args.device)
+#         self.per_channel_dim = train_args.hidden // train_args.channels
+#         self.channel_cls = nn.Linear(self.per_channel_dim, train_args.channels).to(self.args.device)
+
+#         # optumizer
+#         self.optimizer_g = torch.optim.Adam(list(self.encoder.parameters()) + list(self.classifier.parameters())+list(self.classifier_s.parameters()) , lr=train_args.lr,
+#                                             weight_decay=train_args.weight_decay)
+
+#         self.optimizer_c = torch.optim.Adam(list(self.channel_cls.parameters()), lr=train_args.lr,
+#                                             weight_decay=train_args.weight_decay)
+
+#         # loss function
+#         self.criterion_bce = nn.BCEWithLogitsLoss()
+#         self.criterion_dc = DistCor()
+#         self.criterion_mul_cls = nn.CrossEntropyLoss()
+      
+
+#         self.encoder.init_parameters()
+#         self.encoder.init_edge_weight()
+#         self.logger = logger
+        
+        
+
+#         for m in self.modules():
+#             self.weights_init(m)
+
+#     def weights_init(self, m):
+#         if isinstance(m, nn.Linear):
+#             torch.nn.init.xavier_uniform_(m.weight.data)
+#             if m.bias is not None:
+#                 m.bias.data.fill_(0.0)
+
+#     def forward(self, x, edge_index):
+#         h = self.encoder(x, edge_index)
+#         output = self.classifier(h)
+#         return h, output
+    
+#     def save_model(self, path):
+#         torch.save({
+#     'encoder_state_dict': self.encoder.state_dict(),
+#     'classifier_state_dict': self.classifier.state_dict(),
+#     'channel_cls_state_dict': self.channel_cls.state_dict()
+# }, f"{self.args.weight_path}_{self.args.dataset}.pth")
+#         self.logger.info(f"Model saved to {path}")
+
+#     def train_fit(self, data, epochs, **kwargs):
+#         # parsing parameters
+#         alpha = kwargs.get('alpha', None)
+#         beta = kwargs.get('beta', None)
+#         pbar = kwargs.get('pbar', None)
+
+#         best_res_val = 0.0
+#         save_model = 0 
+#         # training encoder, assigner, classifier
+#         for epoch in range(epochs):
+#             self.encoder.train()
+#             self.classifier.train()
+#             self.classifier_s.train()
+#             # cls是否可用
+#             self.channel_cls.train()
+
+#             self.optimizer_g.zero_grad()
+#             self.optimizer_c.zero_grad()
+
+#             h,hs,hy = self.encoder(data.features, data.edge_index)
+#             output = self.classifier(hy)
+#             output_s = self.classifier_s(hs)
+#             # print(output[1])
+#             # output = self.encoder.predict(h)
+
+#             # downstream tasks loss
+#             loss_cls_train = self.criterion_bce(output[data.idx_train],
+#                                                 data.labels[data.idx_train].unsqueeze(1).float())
+#             loss_s = self.criterion_bce(output_s[data.idx_train],
+#                                                 data.sens[data.idx_train].unsqueeze(1).float())
+
+#             # channel identification loss
+#             loss_chan_train = 0
+#             for i in range(self.args.channels):
+#                 chan_output = self.channel_cls(h[:, i*self.per_channel_dim:(i+1)*self.per_channel_dim])
+#                 chan_tar = torch.ones(chan_output.shape[0], dtype=int)*i
+#                 chan_tar = chan_tar.to(self.args.device)
+#                 loss_chan_train += self.criterion_mul_cls(chan_output, chan_tar)
+
+#             # distance correlation loss
+#             loss_disen_train = 0
+#             len_per_channel = int(h.shape[1] / self.args.channels)
+#             for i in range(self.args.channels):
+#                 for j in range(i + 1, self.args.channels):
+#                     loss_disen_train += self.criterion_dc(
+#                         h[data.idx_train, i * len_per_channel:(i + 1) * len_per_channel],
+#                         h[data.idx_train, j * len_per_channel:(j + 1) * len_per_channel])
+
+            
+
+#             loss_train = loss_cls_train + alpha * (loss_chan_train + loss_disen_train) +beta*loss_s
+
+#             loss_train.backward()
+#             self.optimizer_g.step()
+#             self.optimizer_c.step()
+
+#             # evaluating encoder, assigner, classifier
+#             self.encoder.eval()
+#             self.classifier.eval()
+
+#             if epoch % 10 == 0:
+#                 with torch.no_grad():
+#                     h,hs,hy = self.encoder(data.features, data.edge_index)
+                    
+#                     y_output_val = self.classifier(hy)
+#                     s_output_val = self.classifier_s(hs)
+#                     y_output_val = y_output_val.detach()
+#                     y_pred_val = (s_output_val.squeeze() > 0).type_as(data.sens)
+#                     acc_val = accuracy_score(data.labels[data.idx_val].cpu(), y_pred_val[data.idx_val].cpu())
+#                     roc_val = roc_auc_score(data.labels[data.idx_val].cpu(), y_output_val[data.idx_val].cpu())
+#                     f1_val = f1_score(data.labels[data.idx_val].cpu(), y_pred_val[data.idx_val].cpu())
+#                     parity, equality = fair_metric(y_pred_val[data.idx_val].cpu().numpy(),
+#                                                 data.labels[data.idx_val].cpu().numpy(),
+#                                                 data.sens[data.idx_val].cpu().numpy())
+                    
+
+#                     res_val = acc_val + roc_val + parity + equality
+#                     self.logger.info(f'Epoch {epoch}: Val Accuracy: {acc_val:.4f}, Val ROC AUC: {roc_val:.4f}, Val F1: {f1_val:.4f}, Val Parity: {parity:.4f}, Val Equality: {equality:.4f}')
+
+#                     if res_val > best_res_val:
+#                         best_res_val = res_val
+#                         """
+#                             evaluation
+#                         """
+#                         acc_test = accuracy_score(data.labels[data.idx_test].cpu(), y_pred_val[data.idx_test].cpu())
+#                         roc_test = roc_auc_score(data.labels[data.idx_test].cpu(), y_output_val[data.idx_test].cpu())
+#                         f1_test = f1_score(data.labels[data.idx_test].cpu(), y_pred_val[data.idx_test].cpu())
+#                         parity_test, equality_test = fair_metric(y_pred_val[data.idx_test].cpu().numpy(),
+#                                                     data.labels[data.idx_test].cpu().numpy(),
+#                                                     data.sens[data.idx_test].cpu().numpy())
+#                         save_model = epoch
+#                         model_save_path = f"{self.args.weight_path}_{self.args.dataset}.pth"
+#                         self.save_model(model_save_path)
+                    
+#             if pbar is not None:
+#                 pbar.set_postfix({'train_total_loss': "{:.2f}".format(loss_train.item()),
+#                                 'cls_loss':  "{:.2f}".format(loss_cls_train.item()),
+#                                 'disen_loss': "{:.2f}".format(loss_disen_train.item()),
+#                                 'val_loss': "{:.2f}".format(res_val), 'save model': save_model})
+#                 pbar.update(1)
+
+#         if pbar is not None:
+#             pbar.close()
+
+#         self.logger.info(f'ROC AUC: {roc_test:.4f}, Test F1: {f1_test:.4f}, Test Parity: {parity_test:.4f}, Test Equality: {equality_test:.4f}')
+
+
+        
+
+
 
         return roc_test, f1_test, acc_test, parity_test, equality_test
+    def generate_embeddings(self, data):
+        self.encoder.eval()
+        with torch.no_grad():
+            embeddings = self.encoder(data.features, data.edge_index)
+        return embeddings.cpu().numpy()
+
+    def plot_embeddings(self, embeddings, labels, title='Node Embeddings'):
+        # 使用Kernel PCA进行降维
+        kpca = KernelPCA(n_components=2, kernel='rbf', gamma=0.1)
+        embeddings_2d = kpca.fit_transform(embeddings)
+        
+        # 绘制节点表示图
+        plt.figure(figsize=(10, 8))
+        sns.scatterplot(x=embeddings_2d[:, 0], y=embeddings_2d[:, 1], hue=labels, palette='viridis', s=100, alpha=0.7)
+        plt.title(title)
+        plt.xlabel('Component 1')
+        plt.ylabel('Component 2')
+        plt.legend(title='Labels')
+        plt.show()
+        plt.savefig('/home/yzhen/code/fair/FairSAD_copy/plot_yuanshi_y.png')
+    def plot_embeddings_sens(self, embeddings, labels, title='Node Embeddings'):
+        # 使用Kernel PCA进行降维
+        kpca = KernelPCA(n_components=2, kernel='rbf', gamma=0.1)
+        embeddings_2d = kpca.fit_transform(embeddings)
+        
+        # 绘制节点表示图
+        plt.figure(figsize=(10, 8))
+        sns.scatterplot(x=embeddings_2d[:, 0], y=embeddings_2d[:, 1], hue=labels, palette='viridis', s=100, alpha=0.7)
+        plt.title(title)
+        plt.xlabel('Component 1')
+        plt.ylabel('Component 2')
+        plt.legend(title='sens_Labels')
+        plt.show()
+        plt.savefig('/home/yzhen/code/fair/FairSAD_copy/plot_sens.png')
+    def plot_embeddings_both(self, embeddings, labels, sens, title='Node Embeddings'):
+        # 使用Kernel PCA进行降维
+        kpca = KernelPCA(n_components=2, kernel='rbf', gamma=0.1)
+        embeddings_2d = kpca.fit_transform(embeddings)
+        
+        # 创建DataFrame用于绘图
+        df = pd.DataFrame({
+            'X': embeddings_2d[:, 0],
+            'Y': embeddings_2d[:, 1],
+            'Label': labels,
+            'Sens': sens
+        })
+        
+        # 定义形状和颜色映射
+        shapes = {0: 'o', 1: 's'}  # 假设预测值y只有0和1两类，分别用圆形和方形表示
+        colors = {0: 'b', 1: 'r'}  # 假设敏感属性标签只有0和1两类，分别用蓝色和红色表示
+
+        plt.figure(figsize=(10, 8))
+        for label in df['Label'].unique():
+            for sens in df['Sens'].unique():
+                subset = df[(df['Label'] == label) & (df['Sens'] == sens)]
+                plt.scatter(subset['X'], subset['Y'], label=f'Label {label}, Sens {sens}', 
+                            c=colors[sens], marker=shapes[label], edgecolor='k', s=100)
+        
+        plt.title(title)
+        plt.xlabel('Component 1')
+        plt.ylabel('Component 2')
+        plt.legend(title='Label and Sensitive Attribute')
+        plt.show()
+        plt.savefig('/home/yzhen/code/fair/FairSAD_copy/plot_yuanshi_both.png')
 class FairADG(torch.nn.Module):
     def __init__(self, train_args,logger):
         super(FairADG, self).__init__()
@@ -330,8 +568,10 @@ class FairADG(torch.nn.Module):
         pre_emb = self.encoder(data.features, data.edge_index)[data.idx_train]
         if self.avgy:
             self.sens_avg = compute_attribute_vectors_avg_diff_y(pre_emb,self.sens_train,data.labels[data.idx_train])
-            self.angle = calculate_angles(self.sens_avg)
-            print(self.angle)
+            print(self.sens_avg)
+            # 角度错误
+            
+            
         else:
             self.sens_avg = compute_attribute_vectors_avg_diff(pre_emb,self.sens_train)
         
@@ -341,22 +581,28 @@ class FairADG(torch.nn.Module):
             self.encoder.train()
           
             self.classifier.train()
-            # self.channel_cls.train()
+            # 尝试训练 credit 7.5 20：26
+            self.channel_cls.train()
 
             self.optimizer_g.zero_grad()
-            # self.optimizer_c.zero_grad()
+            # 尝试训练
+            self.optimizer_c.zero_grad()
 
             h = self.encoder(data.features, data.edge_index)
+          
             # print('h',h.shape)
             if self.adv == 0:
                 if self.avgy:
                     
                     noisy_embeds, y_repeated = self.augment_data_y(h[data.idx_train], data.labels[data.idx_train],self.sens_avg)
+                    
                 else:
+                    
                     noisy_embeds, y_repeated = self.augment_data(h[data.idx_train], data.labels[data.idx_train],self.sens_avg)
 
            
                 train_emb = torch.cat([h[data.idx_train],noisy_embeds])
+                
                 # 对带标签的数据进行了增广，从18876-19867
                 # print(train_emb.shape)
                 y_targets = torch.cat([data.labels[data.idx_train], y_repeated])
@@ -397,7 +643,8 @@ class FairADG(torch.nn.Module):
                 z_embed_adv = self.classifier(train_emb_adv)
                 # 需要将h中的训练集数据选出来
                 z_embed = self.classifier(h[data.idx_train])
-                loss_cls_train = torch.linalg.norm(z_embed - z_embed_adv, ord=2, dim=1).mean()
+                loss_ood = torch.linalg.norm(z_embed - z_embed_adv, ord=2, dim=1).mean()
+                loss_cls_train = self.criterion_bce(z_embed, data.labels[data.idx_train].unsqueeze(1).float()) + 0.7*loss_ood
                 # print('cls',loss_cls_train)
         
 
@@ -485,10 +732,144 @@ class FairADG(torch.nn.Module):
             pbar.close()
 
         self.logger.info(f'ROC AUC: {roc_test:.4f}, Test F1: {f1_test:.4f}, Test Parity: {parity_test:.4f}, Test Equality: {equality_test:.4f}')
+    
+
 
 
         return roc_test, f1_test, acc_test, parity_test, equality_test
+    def generate_embeddings(self, data):
+        self.encoder.eval()
+        with torch.no_grad():
+            embeddings = self.encoder(data.features, data.edge_index)
+        return embeddings.cpu().numpy()
 
+    def plot_embeddings(self, embeddings, labels, title='Node Embeddings', pre=False):
+        # 使用t-SNE进行降维
+        tsne = TSNE(n_components=2, random_state=0)
+        embeddings_2d = tsne.fit_transform(embeddings)
+
+        # 绘制节点表示图
+        plt.figure(figsize=(10, 8))
+        sns.scatterplot(x=embeddings_2d[:, 0], y=embeddings_2d[:, 1], hue=labels, palette='viridis', s=100, alpha=0.7)
+        plt.title(title)
+        plt.xlabel('Component 1')
+        plt.ylabel('Component 2')
+        plt.legend(title='Labels')
+        plt.show()
+        if pre:
+            plt.savefig('/home/yzhen/code/fair/FairSAD_copy/plot_zhonghe_pre.png')
+        plt.savefig('/home/yzhen/code/fair/FairSAD_copy/plot_zhonghe.png')
+
+    def plot_embeddings_sens(self, embeddings, labels, title='Node Embeddings', pre=False):
+        # 使用t-SNE进行降维
+        tsne = TSNE(n_components=2, random_state=0)
+        embeddings_2d = tsne.fit_transform(embeddings)
+
+        # 绘制节点表示图
+        plt.figure(figsize=(10, 8))
+        sns.scatterplot(x=embeddings_2d[:, 0], y=embeddings_2d[:, 1], hue=labels, palette='viridis', s=100, alpha=0.7)
+        plt.title(title)
+        plt.xlabel('Component 1')
+        plt.ylabel('Component 2')
+        plt.legend(title='sens_Labels')
+        plt.show()
+        if pre:
+            plt.savefig('/home/yzhen/code/fair/FairSAD_copy/plot_zhonghe_sens_pre.png')
+        plt.savefig('/home/yzhen/code/fair/FairSAD_copy/plot_zhonghe_sens.png')
+
+    def plot_embeddings_both(self, embeddings, labels, sens, title='Node Embeddings',datasetname=None):
+        # 使用t-SNE进行降维
+        # tsne = TSNE(n_components=2, random_state=0)
+        # embeddings_2d = tsne.fit_transform(embeddings)
+        kpca = KernelPCA(n_components=2, kernel='rbf', gamma=0.1)
+        embeddings_2d = kpca.fit_transform(embeddings)
+        labels[labels == -1] = 1
+
+        # 保存节点表示到npy文件中
+        if datasetname is not None:
+            np.save(f'/home/yzhen/code/fair/FairSAD_copy/embeddings_{datasetname}.npy', embeddings_2d)
+            np.save(f'/home/yzhen/code/fair/FairSAD_copy/labels_{datasetname}.npy', labels)
+            np.save(f'/home/yzhen/code/fair/FairSAD_copy/sens_{datasetname}.npy', sens)
+        else:
+            np.save('/home/yzhen/code/fair/FairSAD_copy/embeddings.npy', embeddings_2d)
+            np.save('/home/yzhen/code/fair/FairSAD_copy/labels.npy', labels)
+            np.save('/home/yzhen/code/fair/FairSAD_copy/sens.npy', sens)
+
+        # 创建DataFrame用于绘图
+        df = pd.DataFrame({
+            'X': embeddings_2d[:, 0],
+            'Y': embeddings_2d[:, 1],
+            'Label': labels,
+            'Sens': sens
+        })
+
+        # 定义形状映射
+        shapes = {0: 'o', 1: 's'}  # 假设预测值y只有0和1两类，分别用圆形和方形表示
+
+            # 使用特定的色组选择颜色
+        color_name = 'Set3'  # 可以更改为你喜欢的色组，如 'Set3', 'viridis' 等
+        cmap = plt.get_cmap(color_name)
+
+        # 为每个唯一的敏感属性分配颜色
+        unique_sens = df['Sens'].unique()
+        select_colors = np.linspace(0.2,0.75, len(unique_sens))#ko
+        color_map = {sens: cmap(color) for sens, color in zip(unique_sens, select_colors)}
+
+        plt.figure(figsize=(10, 8))
+
+        # 遍历每个标签和敏感属性，绘制散点图
+        for label in df['Label'].unique():
+            for sens in df['Sens'].unique():
+                subset = df[(df['Label'] == label) & (df['Sens'] == sens)]
+                plt.scatter(subset['X'], subset['Y'], label=f'Label {label}, Sens {sens}',
+                            c=[color_map[sens]], marker=shapes[label], edgecolor='k', s=100)
+
+        plt.title(title)
+        plt.xlabel('Component 1')
+        plt.ylabel('Component 2')
+
+        # 将图例放置在整个图片的上方
+        plt.legend(fontsize=18, ncol=2, loc='upper center', bbox_to_anchor=(0.5, 1.15))
+
+        if datasetname is not None:
+            filename = f'/home/yzhen/code/fair/FairSAD_copy/plot_{datasetname}1.png'
+        else:
+            filename = '/home/yzhen/code/fair/FairSAD_copy/plot_both.png'
+
+        plt.savefig(filename)
+       
+    def plot_embeddings_both_pre(self, embeddings, labels, sens, title='Node Embeddings'):
+        # 使用t-SNE进行降维
+        tsne = TSNE(n_components=2, random_state=0)
+        embeddings_2d = tsne.fit_transform(embeddings)
+
+        # 创建DataFrame用于绘图
+        df = pd.DataFrame({
+            'X': embeddings_2d[:, 0],
+            'Y': embeddings_2d[:, 1],
+            'Label': labels,
+            'Sens': sens
+        })
+
+        # 定义形状和颜色映射
+        shapes = {0: 'o', 1: 's'}  # 假设预测值y只有0和1两类，分别用圆形和方形表示
+        colors = {0: 'b', 1: 'r'}  # 假设敏感属性标签只有0和1两类，分别用蓝色和红色表示
+
+        plt.figure(figsize=(10, 8))
+        for label in df['Label'].unique():
+            for sens in df['Sens'].unique():
+                subset = df[(df['Label'] == label) & (df['Sens'] == sens)]
+                plt.scatter(subset['X'], subset['Y'], label=f'Label {label}, Sens {sens}',
+                            c=colors[sens], marker=shapes[label], edgecolor='k', s=100)
+
+        plt.title(title)
+        plt.xlabel('Component 1')
+        plt.ylabel('Component 2')
+        plt.legend(title='Label and Sensitive Attribute')
+        plt.show()
+        plt.savefig('/home/yzhen/code/fair/FairSAD_copy/plot_both_pre.png')
+        
+        
 class DisenLayer(MessagePassing):
     def __init__(self, in_dim, out_dim, channels, reduce=True):
         super(DisenLayer, self).__init__()
@@ -550,7 +931,11 @@ class DisenLayer(MessagePassing):
             # print(c_feats[k].shape)
         
         output = torch.cat(c_feats, dim=1)
+        # 获取两个通道的分别表示
+        channel_1_representation = c_feats[0]  # 第一个通道的表示
+        channel_2_representation = c_feats[1]  # 第二个通道的表示
 
+        # return output,channel_1_representation, channel_2_representation
         return output
 
     def message_and_aggregate(self, adj_t: SparseTensor, x: Tensor) -> Tensor:
@@ -597,15 +982,18 @@ class DisGCN(nn.Module):
         edge_weight = self.assigner(feats_pair.detach())
         # print('ew',edge_weight.shape)
         for layer in self.disenlayers:
+            # x,hs,hy = layer(x, edge_index, edge_weight)
             x = layer(x, edge_index, edge_weight)
             x = self.dropout(x)
+            # hs = self.dropout(hs)
+            # hy = self.dropout(hy)
         return x
     
 
 class NeiborAssigner(nn.Module):
     def __init__(self, nfeats, channels):
         super(NeiborAssigner, self).__init__()
-
+       
         self.layers = nn.Sequential(
             nn.Linear(in_features=2 * nfeats, out_features=channels),
             nn.Linear(in_features=channels, out_features=channels)
@@ -621,7 +1009,8 @@ class NeiborAssigner(nn.Module):
                 m.bias.data.fill_(0.0)
 
     def forward(self, features_pair):
+        # print(features_pair.shape)
         alpha_score = self.layers(features_pair)
         alpha_score = torch.softmax(alpha_score, dim=1)
-        #print(alpha_score)
+        # print(alpha_score)
         return alpha_score

@@ -9,6 +9,27 @@ from torch_sparse import SparseTensor, matmul
 from torch import Tensor
 from torch_geometric.nn.dense.linear import Linear
 import torch.nn.functional as F
+import torch.nn as nn
+import torch.nn.functional as F
+
+class FocalLoss(nn.Module):
+    def __init__(self, alpha=1, gamma=2, reduction='mean'):
+        super(FocalLoss, self).__init__()
+        self.alpha = alpha
+        self.gamma = gamma
+        self.reduction = reduction
+
+    def forward(self, inputs, targets):
+        BCE_loss = F.binary_cross_entropy_with_logits(inputs, targets, reduction='none')
+        pt = torch.exp(-BCE_loss)  # prevents nans when probability 0
+        F_loss = self.alpha * (1-pt)**self.gamma * BCE_loss
+
+        if self.reduction == 'mean':
+            return F_loss.mean()
+        elif self.reduction == 'sum':
+            return F_loss.sum()
+        else:
+            return F_loss
 class Pre_FairADG(torch.nn.Module):
     
     def __init__(self, train_args,logger):
@@ -352,18 +373,39 @@ class FairADG(torch.nn.Module):
 
             h = self.encoder(data.features, data.edge_index)
             # print('h',h.shape)
+            # 定义 FocalLoss 实例
+            focal_loss = FocalLoss(alpha=1, gamma=2, reduction='none')
+
             if self.adv == 0:
                 if self.args.avgy:
-                    
-                    noisy_embeds, y_repeated = self.augment_data_y(h[data.idx_train], data.labels[data.idx_train],self.sens_avg)
+                    noisy_embeds, y_repeated = self.augment_data_y(h[data.idx_train], data.labels[data.idx_train], self.sens_avg)
                 else:
-                    noisy_embeds, y_repeated = self.augment_data(h[data.idx_train], data.labels[data.idx_train],self.sens_avg)
+                    noisy_embeds, y_repeated = self.augment_data(h[data.idx_train], data.labels[data.idx_train], self.sens_avg)
 
-           
-                train_emb = torch.cat([h[data.idx_train],noisy_embeds])
-                # 对带标签的数据进行了增广，从18876-19867
-                # print(train_emb.shape)
+                train_emb = torch.cat([h[data.idx_train], noisy_embeds])
                 y_targets = torch.cat([data.labels[data.idx_train], y_repeated])
+
+                output = self.classifier(train_emb)
+
+                # 计算原始样本和增强样本之间的欧氏距离
+                original_samples = h[data.idx_train].repeat_interleave(self.random_attack_num_samples, dim=0)
+                distances = torch.norm(noisy_embeds - original_samples, p=2, dim=1)
+                normalized_distances = (distances - distances.min()) / (distances.max() - distances.min())
+                
+
+                # 引入随机性
+                random_noise = torch.rand_like(normalized_distances) * 0.1  # 随机噪声的范围为 [0, 0.1]
+                weighted_distances = normalized_distances + random_noise
+
+                # 确保权重仍然在 [0, 1] 范围内
+                weighted_distances = (weighted_distances - weighted_distances.min()) / (weighted_distances.max() - weighted_distances.min())
+
+                # 结合原始样本的权重（全1）和增强样本的权重
+                weights = torch.cat([torch.ones(h.size(0), device=distances.device), weighted_distances])
+
+                # 计算加权的 Focal Loss
+                loss_cls_train = (weights * focal_loss(output, y_targets.unsqueeze(1).float())).mean()
+
 
 
 
@@ -376,24 +418,26 @@ class FairADG(torch.nn.Module):
             
             # print(h.shape)
            
-                output = self.classifier(train_emb)
-                # 计算原始样本和增强样本之间的欧氏距离
-                original_samples = h[data.idx_train].repeat_interleave(self.random_attack_num_samples, dim=0)
-                distances = torch.norm(noisy_embeds - original_samples, p=2, dim=1)
-                normalized_distances = (distances - distances.min()) / (distances.max() - distances.min())
+                # output = self.classifier(train_emb)
+                # # 计算原始样本和增强样本之间的欧氏距离
+                # original_samples = h[data.idx_train].repeat_interleave(self.random_attack_num_samples, dim=0)
+                # distances = torch.norm(noisy_embeds - original_samples, p=2, dim=1)
+                # normalized_distances = (distances - distances.min()) / (distances.max() - distances.min())
 
-                # 引入随机性
-                random_noise = torch.rand_like(normalized_distances) * 0.1  # 随机噪声的范围为 [0, 0.1]
-                weighted_distances = normalized_distances + random_noise
+                # # 引入随机性
+                # random_noise = torch.rand_like(normalized_distances) * 0.1  # 随机噪声的范围为 [0, 0.1]
+                # weighted_distances = normalized_distances + random_noise
 
-                # 确保权重仍然在 [0, 1] 范围内
-                weighted_distances = (weighted_distances - weighted_distances.min()) / (weighted_distances.max() - weighted_distances.min())
+                # # 确保权重仍然在 [0, 1] 范围内
+                # weighted_distances = (weighted_distances - weighted_distances.min()) / (weighted_distances.max() - weighted_distances.min())
 
-                # 结合原始样本的权重（全1）和增强样本的权重
-                weights = torch.cat([torch.ones(h.size(0), device=distances.device), weighted_distances])
+                # # 结合原始样本的权重（全1）和增强样本的权重
+                # weights = torch.cat([torch.ones(h.size(0), device=distances.device), weighted_distances])
 
-                # 计算加权的损失
-                loss_cls_train = (weights * self.criterion_bce(output, y_targets.unsqueeze(1).float())).mean()
+                # # 计算加权的损失
+                # loss_cls_train = (weights * self.criterion_bce(output, y_targets.unsqueeze(1).float())).mean()
+  
+
             # output = self.classifier(h)
             # print(output.shape)
             # print(output[1])
@@ -405,16 +449,7 @@ class FairADG(torch.nn.Module):
 
                 # loss_cls_train = self.criterion_bce(output,
                 #                                     y_targets.unsqueeze(1).float())
-            else:
-                train_emb_adv = self.get_adv_examples(h[data.idx_train],self.sens_avg)
-                # 后面尝试是否要使用对抗样本再相同y的交叉熵损失
-                # output = self.classifier(train_emb_adv)
-                # adv_loss = self.calc_loss(embeddings, train_embeddings_adv).mean()
-                
-                z_embed_adv = self.classifier(train_emb_adv)
-                # 需要将h中的训练集数据选出来
-                z_embed = self.classifier(h[data.idx_train])
-                loss_cls_train = torch.linalg.norm(z_embed - z_embed_adv, ord=2, dim=1).mean()
+          
         
 
 
@@ -459,7 +494,7 @@ class FairADG(torch.nn.Module):
             self.encoder.eval()
             self.classifier.eval()
 
-            if epoch % 50 == 0:
+            if epoch % 10 == 0:
                 
                 h = self.encoder(data.features, data.edge_index)
                 

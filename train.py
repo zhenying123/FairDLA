@@ -73,7 +73,7 @@ def args_parser():
     parser.add_argument('--avgy', type=str2bool, default=False)
     parser.add_argument('--per', type=float, default=0.3)
     parser.add_argument('--rs', type=int, default=10)
-    parser.add_argument('--copy', type=int, default=1)
+    parser.add_argument('--copy', type=int, default=0)
     parser.add_argument('--adv', type=int, default=0)
     args = parser.parse_known_args()[0]
         # 2. 设置设备
@@ -115,6 +115,10 @@ def run(args,logger):
     # 敏感属性和最后的分类都是二元分类，个数都应该填1
     fair_dataset = FairDataset(args.dataset, args.device)
     fair_dataset.load_data()
+    # print(fair_dataset.labels.shape)
+    # label_counts = np.bincount(fair_dataset.labels.detach().cpu().numpy())
+    # label_ratios = label_counts / len(fair_dataset.labels)
+    # print(label_ratios)
     
     
     num_class = 1
@@ -135,6 +139,27 @@ def run(args,logger):
         """
         auc_roc_test, f1_s_test, acc_test, parity_test, equality_test = fairsad_pretrainer.train_fit(fair_dataset, args.epochs, alpha=args.alpha,
                                                                                                 beta=args.beta, pbar=args.pbar,logger=logger)
+        
+        # embeddings = fairsad_pretrainer.generate_embeddings(fair_dataset)
+
+        # # 获取标签
+        # labels = fair_dataset.labels.cpu().numpy()
+
+        # sens = fair_dataset.sens.cpu().numpy()
+        # # 随机选择一半的节点
+        # num_nodes = embeddings.shape[0]
+        # indices = np.random.choice(num_nodes, num_nodes // 2, replace=False)
+        # selected_embeddings = embeddings[indices]
+        # selected_labels = labels[indices]
+      
+        # selected_sens = sens[indices]
+
+        # # 绘制节点表示图
+        # fairsad_pretrainer.plot_embeddings(selected_embeddings, selected_labels)
+        # fairsad_pretrainer.plot_embeddings_sens(selected_embeddings, selected_sens)
+        # fairsad_pretrainer.plot_embeddings_both(selected_embeddings, selected_labels,selected_sens)
+
+
     if args.pre_train == 0:
         print('re')
         #RE
@@ -143,14 +168,75 @@ def run(args,logger):
 
         fairsad_trainer = FairADG(args,logger)
         weight_path = f"{args.weight_path}_{args.dataset}.pth"
+        # 清理CUDA缓存
+        torch.cuda.empty_cache()
         checkpoint = torch.load(weight_path)
         fairsad_trainer.encoder.load_state_dict(checkpoint['encoder_state_dict'])
         fairsad_trainer.classifier.load_state_dict(checkpoint['classifier_state_dict'])
         fairsad_trainer.channel_cls.load_state_dict(checkpoint['channel_cls_state_dict'])
+        embeddings = fairsad_trainer.generate_embeddings(fair_dataset)
+
+        # 获取标签
+        # labels = fair_dataset.labels.cpu().numpy()
+
+        # sens = fair_dataset.sens.cpu().numpy()
+        # # 随机选择一半的节点
+        # num_nodes = embeddings.shape[0]
+        # indices = np.random.choice(num_nodes, num_nodes // 2, replace=False)
+        # selected_embeddings = embeddings[indices]
+        # selected_labels = labels[indices]
+      
+        # selected_sens = sens[indices]
+
+        # # 绘制节点表示图
+        # fairsad_trainer.plot_embeddings(selected_embeddings, selected_labels,pre=True)
+        # fairsad_trainer.plot_embeddings_sens(selected_embeddings, selected_sens,pre=True)
+        # fairsad_trainer.plot_embeddings_both_pre(selected_embeddings, selected_labels,selected_sens)
+
         auc_roc_test, f1_s_test, acc_test, parity_test, equality_test = fairsad_trainer.train_fit(fair_dataset, args.epochs, alpha=args.alpha,
                                                                                                 beta=args.beta, pbar=args.pbar,logger=logger)
         # print(fairsad_trainer)
         # h,o = fairsad_trainer.get(fair_dataset)
+        # 生成节点表示
+        embeddings = fairsad_trainer.generate_embeddings(fair_dataset)
+
+#         # 获取标签
+#         labels = fair_dataset.labels.cpu().numpy()
+#         test_mask = fair_dataset.idx_train
+
+# # 获取测试集中的节点索引
+#         test_indices = test_mask.nonzero(as_tuple=True)[0]
+
+#         # 从测试集中随机选择一半的节点
+#         num_test_nodes = test_indices.shape[0]
+#         indices = np.random.choice(test_indices.cpu().numpy(), num_test_nodes//2, replace=False)
+
+#         sens = fair_dataset.sens.cpu().numpy()
+#         # 随机选择一半的节点
+#         # num_nodes = embeddings.shape[0]
+#         # indices = np.random.choice(num_nodes, num_nodes // 3, replace=False)
+#         selected_embeddings = embeddings[indices]
+#         selected_labels = labels[indices]
+      
+#         selected_sens = sens[indices]
+        labels = fair_dataset.labels.cpu().numpy()
+
+        sens = fair_dataset.sens.cpu().numpy()
+        # 随机选择一半的节点
+        num_nodes = embeddings.shape[0]
+        indices = np.random.choice(num_nodes, num_nodes//3, replace=False)
+        selected_embeddings = embeddings[indices]
+        selected_labels = labels[indices]
+      
+        selected_sens = sens[indices]
+
+        # 绘制节点表示图
+        fairsad_trainer.plot_embeddings(selected_embeddings, selected_labels)
+        fairsad_trainer.plot_embeddings_sens(selected_embeddings, selected_sens)
+        fairsad_trainer.plot_embeddings_both(selected_embeddings, selected_labels,selected_sens,datasetname=args.dataset)
+
+        # 绘制节点表示图
+        
         # print(h)
 
     return auc_roc_test, f1_s_test, acc_test, parity_test, equality_test
@@ -194,10 +280,11 @@ if __name__ == '__main__':
         # print('ree')
         # print(args.seed_num)
         for seed in range(args.seed_num):
+            
             print(seed)
             # set seeds
             args.pbar = tqdm(total=args.epochs, desc=f"Seed {seed + 1}", unit="epoch", bar_format="{l_bar}{bar:30}{r_bar}")
-            
+            set_seed(seed)
 
             # running train
             results.auc[seed, :], results.f1[seed, :], results.acc[seed, :], results.parity[seed, :], \

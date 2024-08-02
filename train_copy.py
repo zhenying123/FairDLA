@@ -63,6 +63,7 @@ def args_parser():
     parser.add_argument('--per', type=float, default=0.3)
     parser.add_argument('--rs', type=int, default=10)
     parser.add_argument('--copy', type=int, default=1)
+    parser.add_argument('--adv', type=int, default=0)
     args = parser.parse_known_args()[0]
     args.cuda = not args.no_cuda and torch.cuda.is_available()
 

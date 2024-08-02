@@ -209,7 +209,10 @@ class FairADG(torch.nn.Module):
         self.logger = logger
         self.perturb_epsilon = self.args.per
         self.random_attack_num_samples = self.args.rs
-
+        self.adv = self.args.adv
+        self.avgy = self.args.avgy
+        print(self.random_attack_num_samples)
+        print('avg',self.avgy)
         
         
 
@@ -229,12 +232,11 @@ class FairADG(torch.nn.Module):
         # 这里不需要处理一下吗？不需要加入sigmod函数吗，变成0-1之间的吗？
         return h, output
     
-    
-
-    def compute_loss(self, output, labels, h_us, sens):
-        # loss_ce = self.criterion_ce(output, labels)
-        fairness_loss = self.compute_fairness_loss(h_us, sens)
-        return fairness_loss
+    def calc_loss(self, embed: torch.Tensor, embed_adv: torch.Tensor) -> torch.Tensor:
+        z_embed_adv = self.classifier(embed_adv)
+        z_embed = self.classifier(embed)
+        l_2 = torch.linalg.norm(z_embed - z_embed_adv, ord=2, dim=1)
+        return l_2
     def get(self, data):
         return self.encoder(data.features, data.edge_index), data.labels
     
@@ -266,6 +268,47 @@ class FairADG(torch.nn.Module):
         noisy_latents += sens_attr_vector_tensor * coeffs
 
         return noisy_latents, y_repeated
+    @torch.no_grad()
+    def get_adv_examples(self, embed: torch.Tensor,attr_vectors_diff) -> torch.Tensor:
+        noisy_emb_all = []
+        losses_all = []
+        for _ in range(self.random_attack_num_samples):
+            noisy_emb = embed.clone()
+            sens_attr_vector_repeated = torch.repeat_interleave(attr_vectors_diff.unsqueeze(0), embed.shape[0],
+                                                                dim=0)
+            coeffs = (2 * torch.rand(embed.shape[0], 1, device=embed.device) - 1) * self.perturb_epsilon
+            noisy_emb += sens_attr_vector_repeated * coeffs
+            noisy_emb_all.append(noisy_emb)
+            loss = self.calc_loss(embed, noisy_emb)
+            losses_all.append(loss.clone().detach())
+        losses_all = torch.stack(losses_all, dim=1)
+        _, idx = torch.max(losses_all, dim=1)
+        adv_examples = []
+        for i, sample_idx in enumerate(idx.cpu().tolist()):
+            adv_examples.append(noisy_emb_all[sample_idx][i])
+        return torch.stack(adv_examples, 0)
+    @torch.no_grad()
+    def get_adv_examples_y(self, embed: torch.Tensor, labels: torch.Tensor, attr_vectors_diff: dict) -> torch.Tensor:
+        noisy_emb_all = []
+        losses_all = []
+        for _ in range(self.random_attack_num_samples):
+            noisy_emb = embed.clone()
+            
+            # 为每个样本选择对应标签的敏感属性向量差异
+            sens_attr_vector_repeated = torch.stack([attr_vectors_diff[label.item()] for label in labels], dim=0)
+            
+            coeffs = (2 * torch.rand(embed.shape[0], 1, device=embed.device) - 1) * self.perturb_epsilon
+            noisy_emb += sens_attr_vector_repeated * coeffs
+            noisy_emb_all.append(noisy_emb)
+            loss = self.calc_loss(embed, noisy_emb)
+            losses_all.append(loss.clone().detach())
+            
+        losses_all = torch.stack(losses_all, dim=1)
+        _, idx = torch.max(losses_all, dim=1)
+        adv_examples = []
+        for i, sample_idx in enumerate(idx.cpu().tolist()):
+            adv_examples.append(noisy_emb_all[sample_idx][i])
+        return torch.stack(adv_examples, 0)
 
     def train_fit(self, data, epochs, **kwargs):
         # parsing parameters
@@ -281,7 +324,7 @@ class FairADG(torch.nn.Module):
         # noisy_embeds, y_repeated = self.augment_data(pre_emb[data.idx_train], data.labels[data.idx_train])
         # training encoder, assigner, classifier
         # 先进行几轮的预训练
-        warm_epochs = 300
+        warm_epochs = 400
         for epoch in range(warm_epochs):
             self.encoder.train()
             self.classifier.train()
@@ -360,9 +403,9 @@ class FairADG(torch.nn.Module):
         # Compute initial sens_avg after pre-training
         pre_emb = self.encoder(data.features, data.edge_index)[data.idx_train]
 
-       
+        if self.avgy:
         # 原始
-        self.sens_avg = compute_attribute_vectors_avg_diff(pre_emb,self.sens_train)
+            self.sens_avg = compute_attribute_vectors_avg_diff_y(pre_emb,self.sens_train,data.labels[data.idx_train])
         # 新根据y细分，得到一个字典
         # self.sens_avg = compute_attribute_vectors_avg_diff_y(pre_emb,self.sens_train,data.labels[data.idx_train])
         print(self.sens_avg)
@@ -371,34 +414,25 @@ class FairADG(torch.nn.Module):
             self.encoder.train()
           
             self.classifier.train()
-            self.channel_cls.train()
+            # self.channel_cls.train()
 
             self.optimizer_g.zero_grad()
-            self.optimizer_c.zero_grad()
-
-            
-
-
+            # self.optimizer_c.zero_grad()
 
             h = self.encoder(data.features, data.edge_index)
-            # 更新使用新的 表示
-            if epoch % 100 == 0:
-                # print(1)
-                if self.args.avgy:
-                    self.sens_avg = compute_attribute_vectors_avg_diff_y(h[data.idx_train],self.sens_train,data.labels[data.idx_train])
+            # print('h',h.shape)
+            if self.adv == 0:
+                if self.avgy:
+                    
                     noisy_embeds, y_repeated = self.augment_data_y(h[data.idx_train], data.labels[data.idx_train],self.sens_avg)
                 else:
-                    self.sens_avg = compute_attribute_vectors_avg_diff(h[data.idx_train],self.sens_train)
                     noisy_embeds, y_repeated = self.augment_data(h[data.idx_train], data.labels[data.idx_train],self.sens_avg)
-            # print('h',h.shape)
-            #     print('sens_avg1',self.sens_avg)
-            # print('sens_avg',self.sens_avg)
 
-           # noisy_embeds, y_repeated = self.augment_data(h[data.idx_train], data.labels[data.idx_train],self.sens_avg1)
-            train_emb = torch.cat([h[data.idx_train],noisy_embeds])
-            # 对带标签的数据进行了增广，从18876-19867
-            # print(train_emb.shape)
-            y_targets = torch.cat([data.labels[data.idx_train], y_repeated])
+           
+                train_emb = torch.cat([h[data.idx_train],noisy_embeds])
+                # 对带标签的数据进行了增广，从18876-19867
+                # print(train_emb.shape)
+                y_targets = torch.cat([data.labels[data.idx_train], y_repeated])
 
 
 
@@ -411,7 +445,7 @@ class FairADG(torch.nn.Module):
             
             # print(h.shape)
            
-            output = self.classifier(train_emb)
+                output = self.classifier(train_emb)
             # output = self.classifier(h)
             # print(output.shape)
             # print(output[1])
@@ -421,8 +455,27 @@ class FairADG(torch.nn.Module):
             # Your existing code
             # train_idx = torch.cat((data.idx_train, torch.arange(data.idx_train[-1]+1, data.idx_train[-1]+1+self.random_attack_num_samples)))
 
-            loss_cls_train = self.criterion_bce(output,
-                                                y_targets.unsqueeze(1).float())
+                loss_cls_train = self.criterion_bce(output,
+                                                    y_targets.unsqueeze(1).float())
+            else:
+                # 先构造对抗样本集，在样本集中选择损失最大即距离最远的作为对抗样本实现
+                if self.avgy:
+                    train_emb_adv = self.get_adv_examples_y(h[data.idx_train],data.labels[data.idx_train],self.sens_avg)
+                else:
+                    train_emb_adv = self.get_adv_examples(h[data.idx_train],self.sens_avg)
+                # 后面尝试是否要使用对抗样本再相同y的交叉熵损失
+                # output = self.classifier(train_emb_adv)
+                # adv_loss = self.calc_loss(embeddings, train_embeddings_adv).mean()
+                
+                z_embed_adv = self.classifier(train_emb_adv)
+                # 需要将h中的训练集数据选出来
+                z_embed = self.classifier(h[data.idx_train])
+                loss_cls_train = torch.linalg.norm(z_embed - z_embed_adv, ord=2, dim=1).mean()
+                # print('cls',loss_cls_train)
+        
+
+
+
 
             # loss_cls_train = self.criterion_bce(output[data.idx_train],
             #                                     data.labels[data.idx_train].unsqueeze(1).float())
@@ -450,9 +503,11 @@ class FairADG(torch.nn.Module):
             #loss_fair = self.compute_fairness_loss(h[data.idx_train], data.sens[data.idx_train])
             # print(loss_fair)
             
+            if self.adv == 0:
+                loss_train = loss_cls_train + alpha * (loss_chan_train + loss_disen_train) 
+            else:
+                loss_train = self.adv * loss_cls_train + alpha * (loss_chan_train + loss_disen_train) 
 
-            loss_train = loss_cls_train + alpha * (loss_chan_train + loss_disen_train) 
-            # loss_train = loss_cls_train 
             loss_train.backward()
             self.optimizer_g.step()
             self.optimizer_c.step()
@@ -462,7 +517,7 @@ class FairADG(torch.nn.Module):
             self.classifier.eval()
             
 
-            if epoch % 50 == 0:
+            if epoch % 10 == 0:
                 
                 h = self.encoder(data.features, data.edge_index)
                 
